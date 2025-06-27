@@ -1,0 +1,155 @@
+// Main React portfolio site
+// Built with Vite + React + Tailwind CSS
+
+// Directory structure:
+// - public/
+// - src/
+//   - assets/
+//   - components/
+//   - pages/
+//   - App.jsx
+//   - main.jsx
+// - tailwind.config.js
+// - index.html
+
+// === 1. index.html ===
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stephen Baird | Aerospace Portfolio</title>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+// === 2. tailwind.config.js ===
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {
+      colors: {
+        space: '#0b0f1a',
+        starlight: '#a0aec0',
+        nebula: '#5eead4'
+      },
+    },
+  },
+  plugins: [],
+}
+
+// === 3. src/main.jsx ===
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
+
+// === 4. src/index.css ===
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// === 5. src/App.jsx ===
+import React from 'react'
+import Header from './components/Header'
+import About from './pages/About'
+import Projects from './pages/Projects'
+import Research from './pages/Research'
+import Contact from './pages/Contact'
+
+export default function App() {
+  return (
+    <div className="font-sans bg-space min-h-screen">
+      <Header />
+      <main className="px-4 md:px-12 py-10">
+        <About />
+        <Projects />
+        <Research />
+        <Contact />
+      </main>
+    </div>
+  )
+}
+
+// === 6. src/components/Header.jsx ===
+export default function Header() {
+  return (
+    <header className="text-center py-8">
+      <h1 className="text-4xl md:text-6xl font-bold text-nebula">Stephen Baird</h1>
+      <p className="text-starlight mt-2">Aspiring Aerospace Engineer | Cape Canaveral Focus</p>
+    </header>
+  )
+}
+
+// === 7. src/pages/About.jsx ===
+export default function About() {
+  return (
+    <section className="my-12 max-w-4xl mx-auto">
+      <h2 className="text-3xl font-semibold mb-4">About Me</h2>
+      <p className="text-starlight">
+        I’m a junior at Embry-Riddle Aeronautical University, majoring in Astronautical Engineering. My
+        focus is on propulsion systems, space mission design, and applying machine learning to
+        aerospace problems. I aim to work in Cape Canaveral contributing to launch systems and
+        spaceflight innovation.
+      </p>
+    </section>
+  )
+}
+
+// === 8. src/pages/Projects.jsx ===
+export default function Projects() {
+  return (
+    <section className="my-12 max-w-4xl mx-auto">
+      <h2 className="text-3xl font-semibold mb-4">Projects</h2>
+      <ul className="space-y-6">
+        <li>
+          <h3 className="text-xl font-bold">ML-Based RSO Prediction</h3>
+          <p className="text-starlight">Used satellite data and Python ML libraries to predict Resident Space Object behavior to aid satellite tracking and conjunction avoidance.</p>
+        </li>
+        <li>
+          <h3 className="text-xl font-bold">2-Stage Solid Rocket Design</h3>
+          <p className="text-starlight">Designed a 2-stage solid rocket system to lift 4,750 kg to LEO using MATLAB and CEA outputs with real propellant formulations.</p>
+        </li>
+        <li>
+          <h3 className="text-xl font-bold">Boston Dynamics Tail Mod</h3>
+          <p className="text-starlight">Developed a functional robotic tail concept for leg-failure recovery on Boston Dynamics robot using fusion and Arduino simulation.</p>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+// === 9. src/pages/Research.jsx ===
+export default function Research() {
+  return (
+    <section className="my-12 max-w-4xl mx-auto">
+      <h2 className="text-3xl font-semibold mb-4">Research</h2>
+      <p className="text-starlight">
+        My current research investigates the use of machine learning to analyze satellite orbital patterns and
+        predict RSO movements using clustering and regression models. This work supports safer space
+        operations and aligns with my goal of contributing to advanced aerospace systems.
+      </p>
+    </section>
+  )
+}
+
+// === 10. src/pages/Contact.jsx ===
+export default function Contact() {
+  return (
+    <section className="my-12 max-w-4xl mx-auto">
+      <h2 className="text-3xl font-semibold mb-4">Contact</h2>
+      <p className="text-starlight">Email: your.email@domain.com</p>
+      <p className="text-starlight">LinkedIn: linkedin.com/in/stephen-baird</p>
+      <p className="text-starlight">GitHub: github.com/stephen-baird</p>
+    </section>
+  )
+}
