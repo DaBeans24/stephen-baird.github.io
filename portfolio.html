@@ -1,155 +1,198 @@
-// Main React portfolio site
-// Built with Vite + React + Tailwind CSS
-
-// Directory structure:
-// - public/
-// - src/
-//   - assets/
-//   - components/
-//   - pages/
-//   - App.jsx
-//   - main.jsx
-// - tailwind.config.js
-// - index.html
-
-// === 1. index.html ===
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Stephen Baird | Aerospace Portfolio</title>
+
+    <!-- Tailwind via CDN (no build step) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              space: "#0b0f1a",
+              starlight: "#a0aec0",
+              nebula: "#5eead4"
+            }
+          }
+        }
+      };
+    </script>
   </head>
-  <body class="bg-gray-900 text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="bg-space text-white font-sans">
+    <!-- Simple navbar -->
+    <nav class="sticky top-0 z-50 backdrop-blur bg-space/70 border-b border-white/10">
+      <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+        <a href="#top" class="font-bold tracking-tight text-nebula">Stephen Baird</a>
+        <div class="space-x-4 text-starlight text-sm">
+          <a class="hover:text-nebula" href="#about">About</a>
+          <a class="hover:text-nebula" href="#projects">Projects</a>
+          <a class="hover:text-nebula" href="#research">Research</a>
+          <a class="hover:text-nebula" href="#leadership">Leadership</a>
+          <a class="hover:text-nebula" href="#contact">Contact</a>
+          <a class="hover:text-nebula" href="#resume">Resume</a>
+        </div>
+      </div>
+    </nav>
+
+    <header id="top" class="text-center py-12">
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-nebula">
+        Stephen Baird
+      </h1>
+      <p class="text-starlight mt-3">
+        Aerospace Engineering (Rocket Propulsion Track) • ERAU ’26 • Cape Canaveral Focus
+      </p>
+    </header>
+
+    <main class="px-4 md:px-8 pb-20 mx-auto w-full max-w-5xl">
+      <!-- About -->
+      <section id="about" class="my-12">
+        <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+        <p class="text-starlight leading-relaxed">
+          Junior at Embry-Riddle Aeronautical University (Daytona Beach), pursuing a B.S. in
+          Aerospace Engineering on the Rocket Propulsion track (GPA ~3.3). Interests include
+          propulsion systems, spacecraft mission design, and applying machine learning to
+          space operations. Decathlete on ERAU Track &amp; Field; Senior Resident Advisor
+          and student leader focused on building strong technical and community outcomes.
+        </p>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="my-12">
+        <h2 class="text-3xl font-semibold mb-4">Projects</h2>
+        <ul class="space-y-6">
+          <li>
+            <h3 class="text-xl font-bold">ML-Based RSO Prediction</h3>
+            <p class="text-starlight">
+              Used satellite data and Python/ML (NNs + regression) to analyze orbital patterns and
+              predict Resident Space Object motion for safer operations and conjunction avoidance.
+            </p>
+          </li>
+          <li>
+            <h3 class="text-xl font-bold">2-Stage Solid Rocket Design</h3>
+            <p class="text-starlight">
+              Designed a two-stage solid launch vehicle concept for ~4,750&nbsp;kg to LEO. Performed
+              performance modeling with MATLAB and CEA-based propellant properties.
+            </p>
+          </li>
+          <li>
+            <h3 class="text-xl font-bold">Boston Dynamics Tail Mod (Concept)</h3>
+            <p class="text-starlight">
+              Robotic tail concept for leg-failure recovery on a quadruped; modeled mechanisms and
+              control sketch with CAD and Arduino-style prototyping.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Research -->
+      <section id="research" class="my-12">
+        <h2 class="text-3xl font-semibold mb-4">Research</h2>
+        <p class="text-starlight leading-relaxed">
+          Ongoing work explores machine learning for spacecraft trajectory prediction (LEO/GTO),
+          targeting lower prediction error and more robust on-orbit operations. Methods include
+          clustering for regime discovery and supervised models for time-series prediction.
+        </p>
+      </section>
+
+      <!-- Leadership & Activities -->
+      <section id="leadership" class="my-12">
+        <h2 class="text-3xl font-semibold mb-4">Leadership &amp; Activities</h2>
+        <ul class="grid md:grid-cols-2 gap-6 text-starlight">
+          <li class="p-4 rounded-xl border border-white/10">
+            <h3 class="font-bold text-white">Senior Resident Advisor</h3>
+            <p>Lead 13 RAs and ~80 residents; crisis response, community development, policy compliance.</p>
+          </li>
+          <li class="p-4 rounded-xl border border-white/10">
+            <h3 class="font-bold text-white">RA &amp; ERRSA Exec Roles</h3>
+            <p>Parliamentarian (’23-’24) and Executive Coordinator (’24-Present); meeting ops &amp; comms.</p>
+          </li>
+          <li class="p-4 rounded-xl border border-white/10">
+            <h3 class="font-bold text-white">Decathlete, ERAU Track &amp; Field</h3>
+            <p>Collegiate multi-event athlete; disciplined training and time management.</p>
+          </li>
+          <li class="p-4 rounded-xl border border-white/10">
+            <h3 class="font-bold text-white">Good Shepherds Foundation</h3>
+            <p>Co-founder; youth-led community projects, fundraising, and outreach.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Contact + Resume -->
+      <section id="contact" class="my-12">
+        <h2 class="text-3xl font-semibold mb-4">Contact</h2>
+        <ul class="space-y-2 text-starlight">
+          <li>
+            Email:
+            <a class="underline hover:text-nebula" href="mailto:stephen.baird.ii@gmail.com">
+              stephen.baird.ii@gmail.com
+            </a>
+          </li>
+          <li>
+            LinkedIn:
+            <a class="underline hover:text-nebula" href="https://linkedin.com/in/stephen-baird" target="_blank" rel="noopener">
+              linkedin.com/in/stephen-baird
+            </a>
+          </li>
+          <li>
+            GitHub:
+            <a class="underline hover:text-nebula" href="https://github.com/stephen-baird" target="_blank" rel="noopener">
+              github.com/stephen-baird
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section id="resume" class="my-12">
+        <h2 class="text-3xl font-semibold mb-4">Resume &amp; Docs</h2>
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Latest resume you uploaded -->
+          <a
+            href="./BAIRD_RESUME_25.pdf"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 hover:border-nebula hover:text-nebula"
+            target="_blank" rel="noopener"
+            >📄 Latest Resume (2025)</a
+          >
+          <!-- Older resume in repo list -->
+          <a
+            href="./RESUME2024.pdf"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 hover:border-nebula hover:text-nebula"
+            target="_blank" rel="noopener"
+            >📄 Resume (2024)</a
+          >
+          <!-- Your PDF report also shown in the repo -->
+          <a
+            href="./latex-report.pdf"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 hover:border-nebula hover:text-nebula"
+            target="_blank" rel="noopener"
+            >🧪 LaTeX Report</a
+          >
+        </div>
+
+        <!-- Optional inline preview of the latest resume (falls back gracefully) -->
+        <div class="mt-6 rounded-xl overflow-hidden border border-white/10">
+          <iframe
+            title="Stephen Baird Resume"
+            src="./BAIRD_RESUME_25.pdf#view=FitH"
+            class="w-full"
+            style="height: 70vh"
+          ></iframe>
+        </div>
+        <p class="text-xs text-starlight/70 mt-2">
+          If the preview doesn’t load, use the “Latest Resume (2025)” button above to download.
+        </p>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 py-6 text-center text-starlight text-sm">
+      © <span id="y"></span> Stephen Baird. All rights reserved.
+    </footer>
+
+    <script>
+      // footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
-
-// === 2. tailwind.config.js ===
-export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
-  theme: {
-    extend: {
-      colors: {
-        space: '#0b0f1a',
-        starlight: '#a0aec0',
-        nebula: '#5eead4'
-      },
-    },
-  },
-  plugins: [],
-}
-
-// === 3. src/main.jsx ===
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
-
-// === 4. src/index.css ===
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-// === 5. src/App.jsx ===
-import React from 'react'
-import Header from './components/Header'
-import About from './pages/About'
-import Projects from './pages/Projects'
-import Research from './pages/Research'
-import Contact from './pages/Contact'
-
-export default function App() {
-  return (
-    <div className="font-sans bg-space min-h-screen">
-      <Header />
-      <main className="px-4 md:px-12 py-10">
-        <About />
-        <Projects />
-        <Research />
-        <Contact />
-      </main>
-    </div>
-  )
-}
-
-// === 6. src/components/Header.jsx ===
-export default function Header() {
-  return (
-    <header className="text-center py-8">
-      <h1 className="text-4xl md:text-6xl font-bold text-nebula">Stephen Baird</h1>
-      <p className="text-starlight mt-2">Aspiring Aerospace Engineer | Cape Canaveral Focus</p>
-    </header>
-  )
-}
-
-// === 7. src/pages/About.jsx ===
-export default function About() {
-  return (
-    <section className="my-12 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-      <p className="text-starlight">
-        I’m a junior at Embry-Riddle Aeronautical University, majoring in Astronautical Engineering. My
-        focus is on propulsion systems, space mission design, and applying machine learning to
-        aerospace problems. I aim to work in Cape Canaveral contributing to launch systems and
-        spaceflight innovation.
-      </p>
-    </section>
-  )
-}
-
-// === 8. src/pages/Projects.jsx ===
-export default function Projects() {
-  return (
-    <section className="my-12 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-4">Projects</h2>
-      <ul className="space-y-6">
-        <li>
-          <h3 className="text-xl font-bold">ML-Based RSO Prediction</h3>
-          <p className="text-starlight">Used satellite data and Python ML libraries to predict Resident Space Object behavior to aid satellite tracking and conjunction avoidance.</p>
-        </li>
-        <li>
-          <h3 className="text-xl font-bold">2-Stage Solid Rocket Design</h3>
-          <p className="text-starlight">Designed a 2-stage solid rocket system to lift 4,750 kg to LEO using MATLAB and CEA outputs with real propellant formulations.</p>
-        </li>
-        <li>
-          <h3 className="text-xl font-bold">Boston Dynamics Tail Mod</h3>
-          <p className="text-starlight">Developed a functional robotic tail concept for leg-failure recovery on Boston Dynamics robot using fusion and Arduino simulation.</p>
-        </li>
-      </ul>
-    </section>
-  )
-}
-
-// === 9. src/pages/Research.jsx ===
-export default function Research() {
-  return (
-    <section className="my-12 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-4">Research</h2>
-      <p className="text-starlight">
-        My current research investigates the use of machine learning to analyze satellite orbital patterns and
-        predict RSO movements using clustering and regression models. This work supports safer space
-        operations and aligns with my goal of contributing to advanced aerospace systems.
-      </p>
-    </section>
-  )
-}
-
-// === 10. src/pages/Contact.jsx ===
-export default function Contact() {
-  return (
-    <section className="my-12 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-4">Contact</h2>
-      <p className="text-starlight">Email: your.email@domain.com</p>
-      <p className="text-starlight">LinkedIn: linkedin.com/in/stephen-baird</p>
-      <p className="text-starlight">GitHub: github.com/stephen-baird</p>
-    </section>
-  )
-}
